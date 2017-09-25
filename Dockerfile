@@ -1,9 +1,9 @@
 FROM centos:7
-MAINTAINER Tuhin Sharma <tusharma@redhat.com>
+MAINTAINER Avishkar Gupta <avgupta@redhat.com>
 
 RUN yum install -y epel-release && \
     yum install -y zip && \
-    yum install -y python-pip python-devel gcc && \
+    yum install -y python34-pip python34-devel gcc && \
     yum -y install tkinter && \
     yum-config-manager --disable testing-devtools-2-centos-7 && \
     yum -y install gcc-c++.x86_64 && \
@@ -14,7 +14,7 @@ RUN yum install -y epel-release && \
 # install python packages
 # --------------------------------------------------------------------------------------------------
 COPY ./analytics_platform/kronos/requirements.txt /
-RUN pip install -r /requirements.txt && rm /requirements.txt
+RUN python3 -m pip install -r /requirements.txt && rm /requirements.txt
 
 
 
